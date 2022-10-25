@@ -1,8 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-using InGroupe.Innovation.Wpf.Bedrock;
-using InGroupe.Innovation.Wpf.Bedrock.Abstractions;
-using InGroupe.Innovation.Wpf.Bedrock.Navigation;
+using Trappist.Wpf.Bedrock.Abstractions;
+
+using Trappist.Wpf.Bedrock;
+using Trappist.Wpf.Bedrock.Navigation;
 
 namespace DemoApp.ViewModels
 {

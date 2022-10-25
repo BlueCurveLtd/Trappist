@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="Trappist.Wpf.Bedrock.Controls.ButtonGroup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Trappist.Wpf.Bedrock.Controls"
+             mc:Ignorable="d" 
+             x:Name="buttonGroup"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style x:Key="DefaultButtonGroupBorder" TargetType="Border">
+                <Setter Property="BorderThickness" Value="0,1,1,0" />
+                <Setter Property="CornerRadius" Value="0,10,10,0" />
+            </Style>
+            <Style x:Key="DefaultButtonGroupButtonText" TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+                <Setter Property="Text" Value="&#xE1CB;" />
+            </Style>
+            <Style x:Key="DefaultButtonGroupButton" TargetType="Button" BasedOn="{StaticResource ButtonSuccess}">
+                <Style.Resources>
+                    <Style TargetType="Border" BasedOn="{StaticResource DefaultButtonGroupBorder}" />
+                </Style.Resources>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Height="{Binding Path=Children[0].Height, RelativeSource={RelativeSource Self}}">
+        <TextBox x:Name="textBox"
+                 LostFocus="textBox_LostFocus" 
+                 TouchUp="textBox_TouchUp" 
+                 TouchDown="textBox_TouchDown"
+                 GotFocus="textBox_GotFocus" 
+                 GotKeyboardFocus="textBox_GotKeyboardFocus"
+                 Padding="8,0,60,0"
+                 VerticalAlignment="Bottom" 
+                 VerticalContentAlignment="Center"
+                 Text="{Binding Path=Text, Source=buttonGroup}" 
+                 d:Text="AAAA" />
+        <Button HorizontalAlignment="Right" 
+                MinWidth="60" 
+                VerticalAlignment="Center" 
+                d:Style="{Binding DefaultButtonGroupButton}"
+                Height="{Binding Height, RelativeSource={RelativeSource FindAncestor,AncestorType=Grid}}"
+                x:Name="button">
+            <TextBlock d:Style="{StaticResource DefaultButtonGroupButtonText}" x:Name="buttonText" />
+        </Button>
+    </Grid>
+</UserControl>

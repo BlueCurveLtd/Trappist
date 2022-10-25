@@ -1,23 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\InGroupe.Innovation.Wpf.Bedrock.Controls\InGroupe.Innovation.Wpf.Bedrock.Controls.csproj" />
-    <ProjectReference Include="..\..\InGroupe.Innovation.Wpf.Bedrock.Themes\InGroupe.Innovation.Wpf.Bedrock.Themes.csproj" />
-    <ProjectReference Include="..\..\InGroupe.Innovation.Wpf.Bedrock.Translation.SourceGenerator\InGroupe.Innovation.Wpf.Bedrock.Translation.SourceGenerator.csproj" />
-    <ProjectReference Include="..\..\InGroupe.Innovation.Wpf.Bedrock\InGroupe.Innovation.Wpf.Bedrock.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\Trappist.Wpf.Bedrock.Controls\Trappist.Wpf.Bedrock.Controls.csproj" />
+        <ProjectReference Include="..\..\Trappist.Wpf.Bedrock.Themes\Trappist.Wpf.Bedrock.Themes.csproj" />
+        <ProjectReference Include="..\..\Trappist.Wpf.Bedrock.Translation.SourceGenerator\Trappist.Wpf.Bedrock.Translation.SourceGenerator.csproj" />
+        <ProjectReference Include="..\..\Trappist.Wpf.Bedrock\Trappist.Wpf.Bedrock.csproj" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Update="appsettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+    <ItemGroup>
+        <None Update="appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 
 </Project>

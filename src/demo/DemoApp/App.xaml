@@ -1,7 +1,7 @@
 ﻿<bedrock:BedrockApplication  x:Class="DemoApp.App"
                              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                             xmlns:bedrock="http://ingroupe.innovation.bedrock"
-                             xmlns:bedrockcontrols="http://ingroupe.innovation.bedrock/controls"
+                             xmlns:bedrock="http://Trappist.bedrock"
+                             xmlns:bedrockcontrols="http://Trappist.bedrock/controls"
                              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <bedrock:BedrockApplication.MainWindow>
         <bedrockcontrols:MasterDetail />
@@ -9,7 +9,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/InGroupe.Innovation.Wpf.Bedrock.Themes;component/BasicBedrockTheme.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Trappist.Wpf.Bedrock.Themes;component/BasicBedrockTheme.xaml" />
              </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

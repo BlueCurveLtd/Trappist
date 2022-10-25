@@ -1,8 +1,10 @@
-﻿    using InGroupe.Innovation.Wpf.Bedrock;
-using InGroupe.Innovation.Wpf.Bedrock.Abstractions;
+﻿using Trappist.Wpf.Bedrock;
+using Trappist.Wpf.Bedrock.Abstractions;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
+using Trappist.Wpf.Bedrock;
 
 namespace DemoApp
 {

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InGroupe.Innovation.Wpf.Bedrock", "src\InGroupe.Innovation.Wpf.Bedrock\InGroupe.Innovation.Wpf.Bedrock.csproj", "{7B1DCEB3-2EDB-441D-BDD1-62D40304B0E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trappist.Wpf.Bedrock", "src\Trappist.Wpf.Bedrock\Trappist.Wpf.Bedrock.csproj", "{7B1DCEB3-2EDB-441D-BDD1-62D40304B0E8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InGroupe.Innovation.Wpf.Bedrock.Themes", "src\InGroupe.Innovation.Wpf.Bedrock.Themes\InGroupe.Innovation.Wpf.Bedrock.Themes.csproj", "{2BC893EB-689A-4069-90EB-92FCA08AB0B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trappist.Wpf.Bedrock.Themes", "src\Trappist.Wpf.Bedrock.Themes\Trappist.Wpf.Bedrock.Themes.csproj", "{2BC893EB-689A-4069-90EB-92FCA08AB0B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InGroupe.Innovation.Wpf.Bedrock.Controls", "src\InGroupe.Innovation.Wpf.Bedrock.Controls\InGroupe.Innovation.Wpf.Bedrock.Controls.csproj", "{8E58470D-C9C5-4891-9B54-C66C483CB9FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trappist.Wpf.Bedrock.Controls", "src\Trappist.Wpf.Bedrock.Controls\Trappist.Wpf.Bedrock.Controls.csproj", "{8E58470D-C9C5-4891-9B54-C66C483CB9FD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InGroupe.Innovation.Wpf.Bedrock.Translation.SourceGenerator", "src\InGroupe.Innovation.Wpf.Bedrock.Translation.SourceGenerator\InGroupe.Innovation.Wpf.Bedrock.Translation.SourceGenerator.csproj", "{5E02B60C-91A6-45BF-86C3-193254C6F33B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trappist.Wpf.Bedrock.Translation.SourceGenerator", "src\Trappist.Wpf.Bedrock.Translation.SourceGenerator\Trappist.Wpf.Bedrock.Translation.SourceGenerator.csproj", "{5E02B60C-91A6-45BF-86C3-193254C6F33B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{954F15CD-B5E7-45CA-8AB4-89D933DAB445}"
 	ProjectSection(SolutionItems) = preProject
@@ -21,11 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{3EC47E0A-C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApp", "src\demo\DemoApp\DemoApp.csproj", "{1C1E328F-6132-4B66-A184-AD09F55F809D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InGroupe.Innovation.Wpf.Bedrock.Navigation.MidyApplication", "src\InGroupe.Innovation.Wpf.Bedrock.Navigation.MidyApplication\InGroupe.Innovation.Wpf.Bedrock.Navigation.MidyApplication.csproj", "{478E5D53-83A9-4267-A3D0-9D80383B4150}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessengerTests", "src\tests\MessengerTests\MessengerTests.csproj", "{235502F5-102F-480C-999A-B50769B435C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InGroupe.Innovation.Wpf.Bedrock.Abstractions", "src\InGroupe.Innovation.Wpf.Bedrock.Abstractions\InGroupe.Innovation.Wpf.Bedrock.Abstractions.csproj", "{994A36D2-BEC1-4A65-B275-BB9151B6235A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trappist.Wpf.Bedrock.Abstractions", "src\Trappist.Wpf.Bedrock.Abstractions\Trappist.Wpf.Bedrock.Abstractions.csproj", "{994A36D2-BEC1-4A65-B275-BB9151B6235A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +51,6 @@ Global
 		{1C1E328F-6132-4B66-A184-AD09F55F809D}.Debug|x64.Build.0 = Debug|x64
 		{1C1E328F-6132-4B66-A184-AD09F55F809D}.Release|x64.ActiveCfg = Release|x64
 		{1C1E328F-6132-4B66-A184-AD09F55F809D}.Release|x64.Build.0 = Release|x64
-		{478E5D53-83A9-4267-A3D0-9D80383B4150}.Debug|x64.ActiveCfg = Debug|x64
-		{478E5D53-83A9-4267-A3D0-9D80383B4150}.Debug|x64.Build.0 = Debug|x64
-		{478E5D53-83A9-4267-A3D0-9D80383B4150}.Release|x64.ActiveCfg = Release|x64
-		{478E5D53-83A9-4267-A3D0-9D80383B4150}.Release|x64.Build.0 = Release|x64
 		{235502F5-102F-480C-999A-B50769B435C0}.Debug|x64.ActiveCfg = Debug|x64
 		{235502F5-102F-480C-999A-B50769B435C0}.Debug|x64.Build.0 = Debug|x64
 		{235502F5-102F-480C-999A-B50769B435C0}.Release|x64.ActiveCfg = Release|x64

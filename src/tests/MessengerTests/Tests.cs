@@ -1,8 +1,10 @@
-﻿namespace MessengerTests;
+﻿using Trappist.Wpf.Bedrock.Messaging;
+
+namespace MessengerTests;
 
 public class Tests
 {
-    private readonly InGroupe.Innovation.Wpf.Bedrock.Messaging.Messenger messenger = new InGroupe.Innovation.Wpf.Bedrock.Messaging.Messenger();
+    private readonly Messenger messenger = new Trappist.Wpf.Bedrock.Messaging.Messenger();
     public record FakeMessage(string Message);
     public record AnotherFakeMessage(string Message);
     public interface IFakeObserver { void CallMeWithMessage(object message); }
