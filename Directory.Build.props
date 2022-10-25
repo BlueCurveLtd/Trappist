@@ -5,18 +5,14 @@
         <TargetFramework>net6.0-windows</TargetFramework>
         <ServerGarbageCollection>true</ServerGarbageCollection>
         <Deterministic>true</Deterministic>
-        <RepositoryUrl>ssh://git@bitbucket.skin.sib.groupein.local:7999/msc/wpf-bedrock.git</RepositoryUrl>
+        <RepositoryUrl>https://github.com/uncensoredverse/Trappist.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageTags>wpf, framework, bedrock, lcu, innovation</PackageTags>
-        <Company>In Groupe</Company>
+        <PackageTags>wpf, framework, trappist</PackageTags>
         <Authors>Teddy ALBINA</Authors>
-        <Copyright>(c) In Groupe $([System.DateTime]::UtcNow.Year.ToString())</Copyright>
-        <Product>Innovation WPF Bedrock</Product>
+        <Product>Trappist WPF Framework</Product>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <PublishReadyToRun>true</PublishReadyToRun>
         <IncludeSymbols>true</IncludeSymbols>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat> 
-        <NoWarn>1701;1702;CS1591;CAC001;HLQ010</NoWarn>
         <Platforms>x64</Platforms>
         <!--<Version>1.0.10-preview</Version>-->
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
