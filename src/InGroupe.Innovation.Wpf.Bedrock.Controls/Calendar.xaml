@@ -1,0 +1,165 @@
+﻿<UserControl x:Class="InGroupe.Innovation.Wpf.Bedrock.Controls.Calendar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="491" d:DesignWidth="397"
+             Background="{StaticResource BrushGray200}"
+             Unloaded="UserControl_Unloaded"
+             Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" d:ShowGridLines="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*" />
+                <RowDefinition Height="92*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" 
+                       x:Name="currentMonthAndYear" 
+                       VerticalAlignment="Top"  
+                       Padding="8" 
+                       d:Text="Juillet 2021"
+                       d:FontSize="14pt"
+                       d:Foreground="White"
+                       d:Background="HotPink"
+                       Grid.ColumnSpan="3"
+                       Margin="0,0,107,0"
+                       TouchUp="SwitchToMonthMode_TouchUp"
+                       MouseUp="SwitchToMonthMode_MouseUp"/>
+                <TextBlock Grid.Column="0" 
+                       x:Name="currentMonth" 
+                       VerticalAlignment="Top"  
+                       Padding="8" 
+                       d:Text="Juillet 2021"
+                       d:FontSize="14pt"
+                       d:Foreground="White"
+                       d:Background="LimeGreen"
+                       Grid.ColumnSpan="3"
+                       Margin="0,0,107,0"
+                       TouchUp="SwitchToYearMode_TouchUp"
+                       MouseUp="SwitchToYearMode_MouseUp"
+                       Visibility="Collapsed"/>
+                <Grid Grid.Column="2" x:Name="daysBackwardForward">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Name="DayBackward" MouseUp="DaysBackward_MouseUp" TouchUp="DaysBackward_TouchUp" VerticalAlignment="Center" HorizontalAlignment="Center" d:Foreground="White" FontFamily="Segoe MDL2 Assets" Text="&#xE018;" FontSize="18pt"/>
+                    <TextBlock Grid.Column="1" x:Name="DayForward" MouseUp="DaysForward_MouseUp" TouchUp="DaysForward_TouchUp" VerticalAlignment="Center" HorizontalAlignment="Center" d:Foreground="White" FontFamily="Segoe MDL2 Assets" Text="&#xE0A1;" FontSize="18pt"/>
+                </Grid>
+                <Grid Grid.Column="2" x:Name="yearsBackwardForward" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Name="YearBackward" MouseUp="YearBackward_MouseUp" TouchUp="YearBackward_TouchUp" VerticalAlignment="Center" HorizontalAlignment="Center" d:Foreground="White" FontFamily="Segoe MDL2 Assets" Text="&#xE018;" FontSize="18pt"/>
+                    <TextBlock Grid.Column="1" x:Name="YearForward" MouseUp="YearForward_MouseUp" TouchUp="YearForward_TouchUp" VerticalAlignment="Center" HorizontalAlignment="Center" d:Foreground="White" FontFamily="Segoe MDL2 Assets" Text="&#xE0A1;" FontSize="18pt"/>
+                </Grid>
+            </Grid>
+            <!-- dddd -->
+            <Grid Grid.Row="1" d:ShowGridLines="True" x:Name="months" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="25*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="33.33*" />
+                    <RowDefinition Height="33.33*" />
+                    <RowDefinition Height="33.33*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="0"></Grid>
+                <Grid Grid.Row="0" Grid.Column="1"></Grid>
+                <Grid Grid.Row="0" Grid.Column="2"></Grid>
+                <Grid Grid.Row="0" Grid.Column="3"></Grid>
+
+                <Grid Grid.Row="1" Grid.Column="0"></Grid>
+                <Grid Grid.Row="1" Grid.Column="1"></Grid>
+                <Grid Grid.Row="1" Grid.Column="2"></Grid>
+                <Grid Grid.Row="1" Grid.Column="3"></Grid>
+
+                <Grid Grid.Row="2" Grid.Column="0"></Grid>
+                <Grid Grid.Row="2" Grid.Column="1"></Grid>
+                <Grid Grid.Row="2" Grid.Column="2"></Grid>
+                <Grid Grid.Row="2" Grid.Column="3"></Grid>
+            </Grid>
+            <Grid Grid.Row="1" d:ShowGridLines="True" x:Name="days">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="88*" />
+                    <RowDefinition Height="12*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" d:ShowGridLines="True" x:Name="daysGrid" d:Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="14.258*" />
+                        <ColumnDefinition Width="14.258*" />
+                        <ColumnDefinition Width="14.258*" />
+                        <ColumnDefinition Width="14.258*" />
+                        <ColumnDefinition Width="14.258*" />
+                        <ColumnDefinition Width="14.258*" />
+                        <ColumnDefinition Width="14.258*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="8*" />
+                        <RowDefinition Height="13.142*" />
+                        <RowDefinition Height="13.142*" />
+                        <RowDefinition Height="13.142*" />
+                        <RowDefinition Height="13.142*" />
+                        <RowDefinition Height="13.142*" />
+                        <RowDefinition Height="13.142*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Day of weeks -->
+                    <TextBlock x:Name="first" Grid.Column="0" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" d:Foreground="White"  d:Text="Lu"  />
+                    <TextBlock x:Name="second" Grid.Column="1" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" d:Foreground="White"  d:Text="Ma" />
+                    <TextBlock x:Name="third" Grid.Column="2" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" d:Foreground="White"  d:Text="Me" />
+                    <TextBlock x:Name="forth" Grid.Column="3" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" d:Foreground="White"  d:Text="Je" />
+                    <TextBlock x:Name="fifth" Grid.Column="4" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" d:Foreground="White"  d:Text="Ve" />
+                    <TextBlock x:Name="sixth" Grid.Column="5" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" d:Foreground="White"  d:Text="Sa" />
+                    <TextBlock x:Name="seventh" Grid.Column="6" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" d:Foreground="White" d:Text="Di" />
+                </Grid>
+                <Grid Grid.Row="1" d:ShowGridLines="True" d:Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" x:Name="CancelButton"  d:Background="{x:Null}" Click="Cancelled_Click" Margin="3">
+                        <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" d:Foreground="White" FontFamily="Segoe MDL2 Assets" Text="&#xE10A;" FontSize="18pt"/>
+                    </Button>
+                    <Button Grid.Column="1" x:Name="ValidateButton" d:Background="{x:Null}" Click="Validate_Click" Margin="3">
+                        <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" d:Foreground="White" FontFamily="Segoe MDL2 Assets" Text="&#xE10B;" FontSize="18pt"/>
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" d:ShowGridLines="True" x:Name="years" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14.285*" />
+                    <ColumnDefinition Width="14.285*" />
+                    <ColumnDefinition Width="14.285*" />
+                    <ColumnDefinition Width="14.285*" />
+                    <ColumnDefinition Width="14.285*" />
+                    <ColumnDefinition Width="14.285*" />
+                    <ColumnDefinition Width="14.285*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="14.285*" />
+                    <RowDefinition Height="14.285*" />
+                    <RowDefinition Height="14.285*" />
+                    <RowDefinition Height="14.285*" />
+                    <RowDefinition Height="14.285*" />
+                    <RowDefinition Height="14.285*" />
+                    <RowDefinition Height="14.285*" />
+                </Grid.RowDefinitions>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

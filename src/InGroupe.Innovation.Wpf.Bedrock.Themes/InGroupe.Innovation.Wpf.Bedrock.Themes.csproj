@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Fonts\Lato-Black.ttf" />
+    <None Remove="Assets\Fonts\Lato-BlackItalic.ttf" />
+    <None Remove="Assets\Fonts\Lato-Bold.ttf" />
+    <None Remove="Assets\Fonts\Lato-BoldItalic.ttf" />
+    <None Remove="Assets\Fonts\Lato-Italic.ttf" />
+    <None Remove="Assets\Fonts\Lato-Light.ttf" />
+    <None Remove="Assets\Fonts\Lato-LightItalic.ttf" />
+    <None Remove="Assets\Fonts\Lato-Regular.ttf" />
+    <None Remove="Assets\Fonts\Lato-Thin.ttf" />
+    <None Remove="Assets\Fonts\Lato-ThinItalic.ttf" />
+  </ItemGroup>
+
+  <!--<ItemGroup>
+    <FrameworkReference Include="Microsoft.WindowsDesktop.App" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Fonts\Lato-Black.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\Lato-BlackItalic.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\Lato-Bold.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\Lato-BoldItalic.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\Lato-Italic.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\Lato-Light.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\Lato-LightItalic.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\Lato-Regular.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\Lato-Thin.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\Lato-ThinItalic.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\Montserrat-Regular.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\Nunito-Regular.ttf" />
+  </ItemGroup> 
+
+</Project>

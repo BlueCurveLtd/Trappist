@@ -1,0 +1,60 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="TextBlock" x:Key="CurrentMonthOrYear">
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat}" />
+        <Setter Property="FontSize" Value="16pt" />
+    </Style>
+    <Style TargetType="TextBlock" x:Key="BackwardForwardButtons">
+        <Setter Property="Foreground" Value="Black" />
+    </Style>
+    <Style TargetType="TextBlock" x:Key="CellText">
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontFamily" Value="{StaticResource Nunito}" />
+        <Setter Property="FontSize" Value="14pt" />
+    </Style>
+    <Style TargetType="Grid" x:Key="CurrentDayCell">
+        <Setter Property="Background" Value="{StaticResource BrushBlue300}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource BrushBlue}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="DefaultCell">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource BrushGray}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SelectedCell">
+        <Setter Property="Background" Value="{StaticResource BrushYellow}" />
+    </Style>
+    
+    <!-- 
+        Default Styles for datetime picker display elements
+    -->
+    <Style TargetType="Border" x:Key="DateTimePickerDisplayContainer">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="BorderBrush" Value="{StaticResource BrushGray400}" />
+    </Style>
+    <Style TargetType="{x:Type Label}" x:Key="DateTimePickerDisplayLabel">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="21.2pt" />
+        <!--<Setter Property="FontWeight" Value="Medium" />-->
+        <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
+        <Setter Property="Padding" Value="8,5,8,5" />
+        <Setter Property="Height" Value="48" />
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="DateTimePickerDisplayTextBox">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="21.2pt" />
+        <!--<Setter Property="FontWeight" Value="Medium" />-->
+        <Setter Property="FontFamily" Value="{StaticResource LatoRegular}" />
+        <Setter Property="Padding" Value="8,5,8,5" />
+        <Setter Property="Height" Value="48" />
+    </Style>
+</ResourceDictionary>
