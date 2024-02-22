@@ -19,8 +19,6 @@ namespace Trappist.Wpf.Bedrock.Translation.SourceGenerator
         
         public void OnVisitSyntaxNode(SyntaxNode syntaxNode)
         {
-            // && cds.Identifier.ValueText == "Fuck" &&  namespace MobileSuitCase
-
             if (syntaxNode is ClassDeclarationSyntax cds && cds.AttributeLists.SelectMany(x => x.Attributes).Any(attr => attr.Name.ToString() == "GenerateTranslation"))
             {
                 this.Namespace = GetNamespace(((Microsoft.CodeAnalysis.SyntaxNode)cds)!.Parent!.ToString());
