@@ -10,12 +10,14 @@ using Trappist.Wpf.Bedrock.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
 using Trappist.Wpf.Bedrock.Navigation;
+using Trappist.Wpf.Bedrock.Messaging;
 
 namespace Trappist.Wpf.Bedrock;
 
 public sealed class NavigationService : INavigation
 {
     private readonly NavigationServiceConfiguration navigationServiceConfiguration;
+    private readonly IMessenger messenger;
     private readonly IServiceProvider serviceProvider;
     private readonly INavigationObserver? navigationObserver;
     private NavigationWindow? navigationWindow;
@@ -26,10 +28,12 @@ public sealed class NavigationService : INavigation
     /// Initializes a new instance of the <see cref="NavigationService"/> class.
     /// </summary>
     /// <param name="navigationServiceConfiguration">Configuration.</param>
+    /// <param name="messenger">The navigation message bus.</param>
     /// <param name="serviceProvider">The service provider.</param>
-    internal NavigationService(NavigationServiceConfiguration navigationServiceConfiguration, IServiceProvider serviceProvider)
+    internal NavigationService(NavigationServiceConfiguration navigationServiceConfiguration, IMessenger messenger, IServiceProvider serviceProvider)
     {
         this.navigationServiceConfiguration = navigationServiceConfiguration;
+        this.messenger = messenger;
         this.serviceProvider = serviceProvider;
         this.navigationObserver = serviceProvider.GetService<INavigationObserver>();
     }
@@ -43,7 +47,7 @@ public sealed class NavigationService : INavigation
     public void Navigate([DisallowNull] Type viewType, bool canRefreshIfSameView = false)
         => this.GetType().GetMethod(nameof(this.NavigateInternal), BindingFlags.NonPublic | BindingFlags.Instance)
              ?.MakeGenericMethod(viewType)
-             ?.Invoke(this, new object[] { canRefreshIfSameView });
+             ?.Invoke(this, [canRefreshIfSameView]);
 
     /// <summary>
     /// Navigates to the specified view.
@@ -74,7 +78,6 @@ public sealed class NavigationService : INavigation
     }
 
     private void NavigateInternal<TView>(bool canRefreshIfSameView) where TView : notnull, FrameworkElement
-    private void NavigateInternal<TView>(bool canRefreshIfSameView) where TView : notnull, FrameworkElement
     {
         if (this.modalContainerShown)
         {
@@ -89,7 +92,7 @@ public sealed class NavigationService : INavigation
             }
             else
             {
-                NavigationEventBus.Instance.Publish<TView>();
+                this.messenger.Send<TView>();
             }
             return;
         }
@@ -135,7 +138,7 @@ public sealed class NavigationService : INavigation
             }
             finally
             {
-                NavigationEventBus.Instance.Publish<TView>();
+                this.messenger.Send<TView>();
             }
         }, System.Windows.Threading.DispatcherPriority.Render);
     }
@@ -162,7 +165,7 @@ public sealed class NavigationService : INavigation
             }
             finally
             {
-                NavigationEventBus.Instance.Publish<TView>();
+                this.messenger.Send<TView>();
             }
         }, System.Windows.Threading.DispatcherPriority.Render);
     }

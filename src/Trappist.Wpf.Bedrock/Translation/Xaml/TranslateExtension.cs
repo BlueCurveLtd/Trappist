@@ -7,7 +7,7 @@ namespace Trappist.Wpf.Bedrock.Translation.Xaml;
 
 [ContentProperty(nameof(Key))]
 [MarkupExtensionReturnType(typeof(string))]
-public class TranslateExtension : MarkupExtension
+public sealed class TranslateExtension : MarkupExtension
 {
     /// <summary>
     /// The translation key.

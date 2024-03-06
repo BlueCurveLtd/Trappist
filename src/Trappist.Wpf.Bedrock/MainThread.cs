@@ -6,7 +6,7 @@ using Trappist.Wpf.Bedrock.Abstractions;
 
 namespace Trappist.Wpf.Bedrock;
 
-public sealed class UiThread : IUiThread
+public sealed class MainThread : IMainThread
 {
     public void Execute(Action action)
     {
@@ -39,6 +39,8 @@ public sealed class UiThread : IUiThread
             try
             {
                 action();
+
+                completionSource.SetResult(default);
             }
             catch (Exception ex)
             {

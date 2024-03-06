@@ -15,6 +15,11 @@ public interface IMessenger
     /// <param name="message">The message.</param>
     void Send<TMessage>(TMessage message);
     /// <summary>
+    /// Sends the specified message.
+    /// </summary>
+    /// <typeparam name="TMessage">The type of the message.</typeparam>
+    void Send<TMessage>();
+    /// <summary>
     /// Subscribes to the specified message.
     /// </summary>
     /// <typeparam name="TMessage">The type of the message.</typeparam>

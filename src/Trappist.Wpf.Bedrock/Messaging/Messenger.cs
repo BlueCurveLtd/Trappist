@@ -15,13 +15,27 @@ public sealed class Messenger : IMessenger
 
     }
 
+    public void Send<TMessage>()
+    {
+        this.EnsureSubscriptionDictionaryHasMessageType<TMessage>();
+
+        var messageType = typeof(TMessage);
+
+        _ = this.currentState.AddOrUpdate(messageType, _ => messageType, (_, _) => messageType);
+
+        foreach (var subscription in this.subscriptions[messageType])
+        {
+            SendMessageToSubscriber(messageType, subscription);
+        }
+    }
+
     public void Send<TMessage>(TMessage message)
     {
         ArgumentNullException.ThrowIfNull(message);
 
         this.EnsureSubscriptionDictionaryHasMessageType<TMessage>();
 
-        var messageType = typeof(TMessage);
+        var messageType =  typeof(TMessage);
 
         _ = this.currentState.AddOrUpdate(messageType, _ => message, (_, _) => message);
 
@@ -44,9 +58,9 @@ public sealed class Messenger : IMessenger
 
         this.subscriptions[messageType].Add(subscription);
 
-        if (this.currentState.ContainsKey(messageType))
+        if (this.currentState.TryGetValue(messageType, out var value))
         {
-            SendMessageToSubscriber(this.currentState[messageType], subscription);
+            SendMessageToSubscriber(value, subscription);
         }
     }
 
@@ -56,22 +70,25 @@ public sealed class Messenger : IMessenger
 
         var messageType = typeof(TMessage);
 
-        if (!this.subscriptions.ContainsKey(messageType))
+        if (!this.subscriptions.TryGetValue(messageType, out var value))
             return;
 
-        var subscription = this.subscriptions[messageType].FirstOrDefault(x => x.Subscriber == subscriber);
+        var subscription = value.FirstOrDefault(x => x.Subscriber == subscriber);
 
         if (subscription is not null)
         {
-            this.subscriptions[messageType].Remove(subscription);
+            value.Remove(subscription);
         }
     }
 
     private void EnsureSubscriptionDictionaryHasMessageType<TMessage>()
+        => this.EnsureSubscriptionDictionaryHasMessageType(typeof(TMessage));
+
+    private void EnsureSubscriptionDictionaryHasMessageType(Type typeofMessage)
     {
-        if (!this.subscriptions.ContainsKey(typeof(TMessage)))
+        if (!this.subscriptions.ContainsKey(typeofMessage))
         {
-            this.subscriptions.TryAdd(typeof(TMessage), new SynchronizedCollection<Subscription>());
+            this.subscriptions.TryAdd(typeofMessage, []);
         }
     }
 

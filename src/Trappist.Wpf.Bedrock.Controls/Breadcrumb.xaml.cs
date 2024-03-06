@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
-using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
-using System.Xml.Linq;
 
 using Trappist.Wpf.Bedrock.Abstractions;
-using Trappist.Wpf.Bedrock.Bus;
-using Trappist.Wpf.Bedrock.Controls.Routing;
 using Trappist.Wpf.Bedrock.Controls.ViewModels;
+using Trappist.Wpf.Bedrock.Messaging;
+using Trappist.Wpf.Bedrock.Messaging.Messages;
 
 namespace Trappist.Wpf.Bedrock.Controls;
 
 public partial class Breadcrumb : UserControl
 {
-    private readonly SubscriptionToken subscriptionToken;
-
     /// <summary>
     /// The node separator property.
     /// </summary>
@@ -78,14 +75,12 @@ public partial class Breadcrumb : UserControl
         this.InitializeComponent();
         this.DataContext = new BreadcrumbViewModel();
         this.Nodes.Clear();
-        this.subscriptionToken = NavigationEventBus.Instance.Subscribe(currentViewInfo =>
+
+        ServiceLocator.GetService<IMessenger>()!.Subscribe<NavigationMessage>(this, value =>
         {
-            if (currentViewInfo is { ViewType: not null })
+            if (value is NavigationMessage { ViewType: not null } message)
             {
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    this.ShowElement(currentViewInfo.ViewType);
-                });
+                Application.Current.Dispatcher.Invoke(() => this.ShowElement(message.ViewType));
             }
         });
     }
@@ -122,17 +117,14 @@ public partial class Breadcrumb : UserControl
         }
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Maintainability", "CA1508:Avoid dead conditional code", Justification = "Analyzer is lost.")]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0075:Simplify conditional expression", Justification = "Clarity")]
     private void AddOrRemoveElement(Type page)
     {
-        if (typeof(IModal).IsAssignableFrom(page))
+        if (page.GetCustomAttribute<ModalAttribute>() is not null)
         {
             return;
         }
 
-
-        var node = this.Nodes.FirstOrDefault(x => x.Page!.Equals(page));
+        var node = this.Nodes.Find(x => x.Page!.Equals(page));
 
         var dataContext = (BreadcrumbViewModel)this.DataContext;
         dataContext.AddOrRemove(
@@ -147,7 +139,7 @@ public partial class Breadcrumb : UserControl
             new InternalBreadcrumbNode 
             {
                 View = XamlClone(this.NodeSeparator!), 
-                IsSeparator = true 
+                IsSeparator = true, 
             },
             ShouldClear(node));
     }
@@ -208,11 +200,10 @@ public partial class Breadcrumb : UserControl
             return false;
         }
 
-        public override int GetHashCode()
-            => unchecked(HashCode.Combine(this.Page, this.IsSeparator));
+        public override int GetHashCode() => unchecked(HashCode.Combine(this.Page, this.IsSeparator));
     }
 
-    private void BreadcrumbControl_Unloaded(object sender, RoutedEventArgs e) => NavigationEventBus.Instance.Unsubscribe(this.subscriptionToken);
+    private void BreadcrumbControl_Unloaded(object sender, RoutedEventArgs e) => ServiceLocator.GetService<IMessenger>()!.Unsubscribe<NavigationMessage>(this);
 
     private void Grid_TouchUp(object sender, System.Windows.Input.TouchEventArgs e)
     {
@@ -260,7 +251,7 @@ public sealed class BreadcrumbNode
     /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "MA0016:Prefer returning collection abstraction instead of implementation", Justification = "WPF")]
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1002:Do not expose generic lists", Justification = "WPF")]
-    public ClearRule ClearRule { get; init; }
+    public ClearRule? ClearRule { get; init; }
 }
 
 public abstract class ClearRule : DependencyObject

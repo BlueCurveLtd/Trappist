@@ -1,9 +1,12 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Windows.Input;
 
-using Trappist.Wpf.Bedrock.Abstractions;
+using DemoApp.Views;
 
 using Trappist.Wpf.Bedrock;
-using Trappist.Wpf.Bedrock.Navigation;
+using Trappist.Wpf.Bedrock.Abstractions;
+using Trappist.Wpf.Bedrock.Command;
+using Trappist.Wpf.Bedrock.Command.Abstractions;
 
 namespace DemoApp.ViewModels
 {
@@ -11,12 +14,24 @@ namespace DemoApp.ViewModels
     {
         public string? NavigationType { get; private set; }
 
-        public void NavigateFrom([DisallowNull] NavigationParameters navigationParameters)
+
+        public ICommand GoBack { get; }
+
+        public NavigatedWithViewModel(INavigation navigation)
+        {
+            this.GoBack = new RelayCommand(() =>
+            {
+                navigation.Navigate<Home>();
+            });
+        }
+
+
+        public void NavigateFrom([DisallowNull] INavigationParameters navigationParameters)
         {
              
         }
 
-        public void NavigateTo([DisallowNull] NavigationParameters navigationParameters)
+        public void NavigateTo([DisallowNull] INavigationParameters navigationParameters)
         {
             this.NavigationType = $"Type of navigation used: {navigationParameters.Get<string>("NavigationType")!}";
         }

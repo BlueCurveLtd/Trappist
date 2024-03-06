@@ -29,7 +29,7 @@ internal static class ViewModelLocatorProvider
             }
             else
             {
-                viewModel = Activator.CreateInstance(viewModelType, constructors[0].GetParameters().Select(x => BedrockApplication.Container.GetService(x.ParameterType)).ToArray());
+                viewModel = Activator.CreateInstance(viewModelType, constructors[0].GetParameters().Select(x => TrappistApplication.Container.GetService(x.ParameterType)).ToArray());
             }
 
             factory(view, viewModel);

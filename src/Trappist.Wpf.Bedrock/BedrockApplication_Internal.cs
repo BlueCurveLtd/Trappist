@@ -4,20 +4,22 @@ using System.Windows;
 
 using ConfigurationSubstitution;
 
-using Trappist.Wpf.Bedrock.Abstractions;
-
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 
+using Trappist.Wpf.Bedrock.Abstractions;
 using Trappist.Wpf.Bedrock.InstanceControl;
 
 namespace Trappist.Wpf.Bedrock;
 
-public abstract partial class BedrockApplication
+public abstract partial class TrappistApplication
 {
     private void ConfigureServicesInternal(HostBuilderContext hostBuilderContext, IServiceCollection serviceCollection)
     {
+        serviceCollection.TryAddSingleton(ServiceLocator.Initialize);
+
         this.ConfigureServices(hostBuilderContext, serviceCollection);
 
         this.RegisterNavigationService(serviceCollection);

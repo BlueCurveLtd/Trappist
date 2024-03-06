@@ -1,17 +1,15 @@
-﻿using Trappist.Wpf.Bedrock;
-using Trappist.Wpf.Bedrock.Abstractions;
-
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using Trappist.Wpf.Bedrock;
+using Trappist.Wpf.Bedrock.Abstractions;
 
 namespace DemoApp
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : BedrockApplication
+    public partial class App : TrappistApplication
     {
         public App()
             : base("TestDemo")

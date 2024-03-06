@@ -1,11 +1,11 @@
-﻿<bedrock:BedrockApplication  x:Class="DemoApp.App"
+﻿<trappist:TrappistApplication  x:Class="DemoApp.App"
                              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                             xmlns:bedrock="http://Trappist.bedrock"
-                             xmlns:bedrockcontrols="http://Trappist.bedrock/controls"
-                             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <bedrock:BedrockApplication.MainWindow>
-        <bedrockcontrols:MasterDetail />
-    </bedrock:BedrockApplication.MainWindow>
+                             xmlns:trappist="http://trappist.bedrock"
+                             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                               xmlns:custom="clr-namespace:Trappist.Wpf.Bedrock.Controls.Pages;assembly=Trappist.Wpf.Bedrock.Controls">
+    <trappist:TrappistApplication.MainWindow>
+        <custom:MasterDetail />
+    </trappist:TrappistApplication.MainWindow>
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -13,4 +13,4 @@
              </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
-</bedrock:BedrockApplication>
+</trappist:TrappistApplication>

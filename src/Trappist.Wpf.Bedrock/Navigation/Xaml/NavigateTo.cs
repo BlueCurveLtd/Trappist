@@ -57,7 +57,7 @@ public sealed class NavigateTo : CommandExtension<NavigateTo>
 
     public override void Execute([AllowNull] object? parameter)
     {
-        var navigationService = BedrockApplication.Container.GetService<INavigation>()!;
+        var navigationService = TrappistApplication.Container.GetService<INavigation>()!;
 
         if (string.IsNullOrWhiteSpace(this.ViewAlias) && this.ViewType is null)
         {

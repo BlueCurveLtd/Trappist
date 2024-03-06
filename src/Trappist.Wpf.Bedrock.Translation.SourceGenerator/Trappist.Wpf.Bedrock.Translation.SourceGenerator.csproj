@@ -21,6 +21,11 @@
         <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="System.Text.Encodings.Web" Version="6.0.0" GeneratePathProperty="true" PrivateAssets="all" />
         <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" GeneratePathProperty="true" PrivateAssets="all" />
+
+        <PackageVersion Include="DotNet.ReproducibleBuilds" Version="1.1.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageVersion>
     </ItemGroup>
 
 
@@ -49,10 +54,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="bin\x64\Debug\netstandard2.0\\Trappist.Wpf.Bedrock.Translation.SourceGenerator.dll" />
+        <None Remove="bin\x64\Debug\netstandard2.0\\Trappist.Wpf.Bedrock.Translation.SourceGenerator.dll" />
     </ItemGroup>
- 
- 
+    
     <Target Name="GetDependencyTargetPaths">
         <ItemGroup>
             <TargetPathWithTargetPlatformMoniker Include="$(PKGHumanizer_Core)\lib\netstandard2.0\Humanizer.dll" IncludeRuntimeDependency="false" />

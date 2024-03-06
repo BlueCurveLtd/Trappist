@@ -7,14 +7,12 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
-using Trappist.Wpf.Bedrock.Abstractions;
-
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-using Trappist.Wpf.Bedrock;
+using Trappist.Wpf.Bedrock.Abstractions;
 
 namespace Trappist.Wpf.Bedrock;
 
@@ -22,7 +20,7 @@ namespace Trappist.Wpf.Bedrock;
 /// Base bedrock application model
 /// </summary>
 /// <seealso cref="System.Windows.Application" />
-public abstract partial class BedrockApplication : Application
+public abstract partial class TrappistApplication : Application
 {
     // see: BCL/System/Diagnostics/Assert.cs
     private const int COR_E_FAILFAST = unchecked((int)0x80131623);
@@ -36,10 +34,10 @@ public abstract partial class BedrockApplication : Application
     public string ApplicationName { get; }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BedrockApplication"/> class.
+    /// Initializes a new instance of the <see cref="TrappistApplication"/> class.
     /// </summary>
     /// <param name="applicationName">The application name.</param>
-    protected BedrockApplication(string applicationName)
+    protected TrappistApplication(string applicationName)
         :base()
     {
         if (string.IsNullOrWhiteSpace(applicationName))
@@ -69,7 +67,7 @@ public abstract partial class BedrockApplication : Application
 
         if (Host?.Services is not null)
         {
-            Container.GetRequiredService<ILogger<BedrockApplication>>().LogError(e.Exception, $"Unhandled Task exception. A fail fast will be launch. [Source]: 'TaskScheduler' - [Time]: '{now}'");
+            Container.GetRequiredService<ILogger<TrappistApplication>>().LogError(e.Exception, $"Unhandled Task exception. A fail fast will be launch. [Source]: 'TaskScheduler' - [Time]: '{now}'");
         }
 
         FailFast($"Unhandled exception. [ApplicationName]: '{this.ApplicationName}'", new BedrockApplicationException($"An error occured before the construction of the application host. [Source]: 'TaskScheduler' - [Time]: '{now}'.", e.Exception));
@@ -81,7 +79,7 @@ public abstract partial class BedrockApplication : Application
 
         if (Host?.Services is not null)
         {
-            Container.GetRequiredService<ILogger<BedrockApplication>>().LogError((Exception)e.ExceptionObject, $"Unhandled exception. A fail fast will be launch.  [Source]: 'AppDomain' - [Time]: '{now}'");
+            Container.GetRequiredService<ILogger<TrappistApplication>>().LogError((Exception)e.ExceptionObject, $"Unhandled exception. A fail fast will be launch.  [Source]: 'AppDomain' - [Time]: '{now}'");
         }
 
         FailFast($"Unhandled exception. [ApplicationName]: '{this.ApplicationName}'", new BedrockApplicationException($"An error occured before the construction of the application host. [Source]: 'AppDomain' - [Time]: '{now}'", (Exception)e.ExceptionObject));

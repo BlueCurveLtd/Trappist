@@ -25,12 +25,15 @@ public static class DependencyInjectionExtensions
         var navigationConfiguration = new NavigationServiceConfiguration();
         configure?.Invoke(navigationConfiguration);
 
+
+        serviceCollection.AddMessaging();
         serviceCollection.TryAddSingleton(navigationConfiguration);
         serviceCollection.TryAddSingleton<INavigationRegistry>(new NavigationRegistry());
         serviceCollection.TryAddSingleton<INavigation>(serviceProvider => new NavigationService(
             serviceProvider.GetRequiredService<NavigationServiceConfiguration>(),
+            serviceProvider.GetRequiredService<IMessenger>(),
             serviceProvider
-            ));
+            ));       
 
         return serviceCollection;
     }
@@ -74,7 +77,7 @@ public static class DependencyInjectionExtensions
     /// </summary>
     /// <param name="serviceCollection">The service collection.</param>
     /// <returns>The service collection.</returns>
-    public static IServiceCollection AddUiThread(this IServiceCollection serviceCollection) => serviceCollection.AddTransient<IUiThread>();
+    public static IServiceCollection AddMainThread(this IServiceCollection serviceCollection) => serviceCollection.AddTransient<IMainThread>();
 
 
     /// <summary>
@@ -91,7 +94,6 @@ public static class DependencyInjectionExtensions
 
         return serviceCollection;
     }
-
 
     /// <summary>
     /// Adds the modal navigation system.

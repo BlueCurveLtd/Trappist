@@ -1,11 +1,7 @@
-﻿
-using System.Collections.Generic;
-
-using DemoApp.Views;
-
-using Trappist.Wpf.Bedrock.Abstractions;
+﻿using DemoApp.Views;
 
 using Trappist.Wpf.Bedrock;
+using Trappist.Wpf.Bedrock.Abstractions;
 using Trappist.Wpf.Bedrock.Command;
 using Trappist.Wpf.Bedrock.Navigation;
 

@@ -4,7 +4,7 @@
     {
         private static readonly MasterDetail masterDetail;
 
-        static MasterDetailInfo() => masterDetail = (MasterDetail)BedrockApplication.Current.MainWindow;
+        static MasterDetailInfo() => masterDetail = (MasterDetail)TrappistApplication.Current.MainWindow;
 
         public static string? Title
         {
